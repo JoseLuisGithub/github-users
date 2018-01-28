@@ -33,9 +33,15 @@ angular.module('github')
         $('#example').DataTable(
           {
             "pageLength": 12,
-            "bLengthChange": false
+            "bLengthChange": false,
+            "responsive": true,
+            drawCallback: function(){
+              var myURL = document.location;
+              var basePath = myURL.protocol +'//'+ myURL.host + '/#' + $location.path()+'/';
+              window.history.replaceState(null, null, basePath+$('.current').text());
+           }
           }
         );
-      }, 400);
+      }, 450);
     } );
 }]);
