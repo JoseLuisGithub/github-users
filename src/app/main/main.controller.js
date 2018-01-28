@@ -1,10 +1,26 @@
 'use strict';
 angular.module('github')
-.controller('MainCtrl', ['$scope', '$rootScope', 'userListService', 'providerService',
-  function ($scope, $rootScope, userListService, providerService) {
+.controller('MainCtrl', ['$scope', '$location', 'userListService', 'providerService',
+  function ($scope, $location, userListService, providerService) {
     //_Github list users.
     userListService.query(onSuccess, onError);
     $scope.userdata = [];
+
+    $scope.engineUserRepo = function (user) {
+      var newLocation= {
+        currentPath: $location.path(),
+        identifier: user.login
+      }
+      engineLocation(newLocation);
+    }
+
+    /**
+     * _Engines location user-repo path.
+     * @param result, users array on Github.
+     */
+    function engineLocation (resource) {
+      $location.path(resource.currentPath + '/' + resource.identifier).replace();
+    }
 
     /**
      * _Request service successful.
@@ -37,7 +53,7 @@ angular.module('github')
 
     /**
     * _Request service failed.
-    * @param result, Github service error.
+    * @param error, Github service error.
     */
     function onError(error) {
       console.log('Error: ' + error);
