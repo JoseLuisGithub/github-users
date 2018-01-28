@@ -44,3 +44,28 @@ div.github-users-list {
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  div.github-users-list {
+    li.card {
+      width: 320px;
+    }
+  }
+}
+@media only screen and (max-width: 425px) and (orientation: portrait) {
+  div.github-users-list {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    ul.wrapper {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      li.card {
+        width: 300px;
+      }
+    }
+  }
+}
