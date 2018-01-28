@@ -17,7 +17,6 @@ angular.module('github')
      * @param result, user object populated with their list of his repos info.
      */
     function successUserRepo(result) {
-      console.log(result);
       $scope.userRepo = result;
     }
 
@@ -33,7 +32,7 @@ angular.module('github')
       setTimeout(function(){
         $('#example').DataTable(
           {
-            "pageLength": 14,
+            "pageLength": 12,
             "bLengthChange": false
           }
         );
