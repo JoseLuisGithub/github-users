@@ -6,7 +6,6 @@ var SERVICE = {
 angular.module('github',
   ['ngCookies', 'ngSanitize', 'ngResource', 'ngRoute', 'directive'])
     .config(function ($routeProvider,$httpProvider, $locationProvider) {
-      $locationProvider.hashPrefix('');
       $routeProvider
       .when('/users', {
         templateUrl: 'app/main/main.html',

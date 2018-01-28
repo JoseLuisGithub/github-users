@@ -6,7 +6,7 @@ angular.module('github')
     userListService.query(onSuccess, onError);
     $scope.userdata = [];
 
-    $scope.loadUserRepo = function (user) {
+    $scope.engineUserRepo = function (user) {
       var newLocation= {
         currentPath: $location.path(),
         identifier: user.login
@@ -14,9 +14,12 @@ angular.module('github')
       engineLocation(newLocation);
     }
 
+    /**
+     * _Engines location user-repo path.
+     * @param result, users array on Github.
+     */
     function engineLocation (resource) {
-      $location.path(resource.currentPath + '/' + resource.identifier);
-      $location.replace();
+      $location.path(resource.currentPath + '/' + resource.identifier).replace();
     }
 
     /**
@@ -35,7 +38,6 @@ angular.module('github')
      * @param result, Github service error.
      */
     function getPersonalUserData (userUrlData) {
-      // console.log(userUrlData);
       providerService.getData(userUrlData.url)
       .then(successUserData)
       .catch(onError);
