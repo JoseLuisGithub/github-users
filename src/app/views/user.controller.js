@@ -6,7 +6,7 @@ angular.module('github')
 
     //_Inits user controller repo data info.
     function initController() {
-      var userRepoUrl = baseUrl + $location.path();
+      var userRepoUrl = baseUrl + $location.path() + '/repos';
       providerService.getData(userRepoUrl)
       .then(successUserRepo)
       .catch(onError);
@@ -17,6 +17,7 @@ angular.module('github')
      * @param result, user object populated with their list of his repos info.
      */
     function successUserRepo(result) {
+      console.log(result);
       $scope.userRepo = result;
     }
 
@@ -27,4 +28,15 @@ angular.module('github')
     function onError(error) {
       console.log('Error: ' + error);
     }
+
+    $(document).ready(function() {
+      setTimeout(function(){
+        $('#example').DataTable(
+          {
+            "pageLength": 14,
+            "bLengthChange": false
+          }
+        );
+      }, 400);
+    } );
 }]);
