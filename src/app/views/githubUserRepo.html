@@ -1,0 +1,26 @@
+<!-- githubUserRepo.html -->
+<div class="github-user-repo">
+  <h1>List user repositories</h1>
+  <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Issues</th>
+          <th>Open issues</th>
+          <th>Forks</th>
+          <th>Link Repository</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="repo in userRepo">
+          <td><label class="name">{{repo.name}}</label></td>
+          <td><div class="description">{{repo.description}}</div></td>
+          <td><label>{{repo.open_issues_count}}</label></td>
+          <td><label>{{repo.open_issues}}</label></td>
+          <td><label>{{repo.forks_count}}</label></td>
+          <td><a class="link-page" href="{{repo.html_url}}" target="_blank">Github User Repository</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

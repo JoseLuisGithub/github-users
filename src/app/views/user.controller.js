@@ -6,7 +6,7 @@ angular.module('github')
 
     //_Inits user controller repo data info.
     function initController() {
-      var userRepoUrl = baseUrl + $location.path();
+      var userRepoUrl = baseUrl + $location.path() + '/repos';
       providerService.getData(userRepoUrl)
       .then(successUserRepo)
       .catch(onError);
@@ -27,4 +27,15 @@ angular.module('github')
     function onError(error) {
       console.log('Error: ' + error);
     }
+
+    $(document).ready(function() {
+      setTimeout(function(){
+        $('#example').DataTable(
+          {
+            "pageLength": 12,
+            "bLengthChange": false
+          }
+        );
+      }, 400);
+    } );
 }]);
